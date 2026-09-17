@@ -47,7 +47,7 @@ static/css/         # Custom stylesheet
 1. **Clone the repository**
    ```bash
    git clone https://github.com/sobuzytp/blood_sync.git
-   cd bloodsync
+   cd blood_sync
    ```
 
 2. **Create and activate a virtual environment**
