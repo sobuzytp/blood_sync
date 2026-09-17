@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Blood Request{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 500px;">
+    <div class="card shadow-sm p-4 text-center">
+        <h4>Delete Blood Request?</h4>
+        <p>Are you sure you want to delete the request for <strong>{{ blood_request.patient_name }}</strong>? This cannot be undone.</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger w-100 mb-2">Yes, Delete</button>
+        </form>
+        <a href="{% url 'requests_app:detail' blood_request.pk %}" class="btn btn-outline-secondary w-100">Cancel</a>
+    </div>
+</div>
+{% endblock %}

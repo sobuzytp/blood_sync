@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 600px;">
+    <div class="card shadow-sm p-4">
+        <div class="text-center mb-3">
+            {% if profile.profile_picture %}
+            <img src="{{ profile.profile_picture.url }}" class="donor-avatar" style="width:100px;height:100px;" alt="Profile picture">
+            {% else %}
+            <div class="donor-avatar d-inline-flex align-items-center justify-content-center bg-light" style="width:100px;height:100px;font-size:2rem;">
+                {{ profile.full_name|slice:":1"|upper }}
+            </div>
+            {% endif %}
+        </div>
+        <h3 class="text-center mb-4">{{ profile.full_name|default:user.username }}</h3>
+        <table class="table table-borderless">
+            <tr><th>Username</th><td>{{ user.username }}</td></tr>
+            <tr><th>Email</th><td>{{ user.email }}</td></tr>
+            <tr><th>Phone Number</th><td>{{ profile.phone_number|default:"-" }}</td></tr>
+            <tr><th>Blood Group</th><td>{{ profile.blood_group|default:"-" }}</td></tr>
+            <tr><th>Location</th><td>{{ profile.location|default:"-" }}</td></tr>
+            <tr><th>Date of Birth</th><td>{{ profile.date_of_birth|default:"-" }}</td></tr>
+        </table>
+        <div class="d-flex gap-2 justify-content-center mt-3">
+            <a href="{% url 'accounts:profile_edit' %}" class="btn btn-outline-danger">Edit Profile</a>
+            {% if user.donor_profile %}
+            <a href="{% url 'donors:detail' user.donor_profile.pk %}" class="btn btn-danger">View Donor Profile</a>
+            {% else %}
+            <a href="{% url 'donors:create' %}" class="btn btn-danger">Become a Donor</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

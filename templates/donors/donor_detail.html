@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ donor.name }}{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 650px;">
+    <div class="card shadow-sm p-4">
+        <div class="d-flex justify-content-between align-items-start mb-3">
+            <h3 class="mb-0">{{ donor.name }}</h3>
+            <span class="badge {% if donor.is_available %}badge-available{% else %}badge-not-available{% endif %} fs-6">
+                {{ donor.get_availability_display }}
+            </span>
+        </div>
+        <table class="table table-borderless">
+            <tr><th style="width:200px;">Blood Group</th><td><span class="badge bg-danger">{{ donor.blood_group }}</span></td></tr>
+            <tr><th>Location</th><td>{{ donor.location }}</td></tr>
+            <tr><th>Last Donation Date</th><td>{{ donor.last_donation_date|default:"Not recorded" }}</td></tr>
+            <tr><th>Contact Number</th><td>{{ donor.phone_number }}</td></tr>
+            <tr><th>Description</th><td>{{ donor.description|default:"-"|linebreaksbr }}</td></tr>
+        </table>
+
+        {% if user == donor.user %}
+        <div class="d-flex gap-2 mt-3">
+            <a href="{% url 'donors:edit' donor.pk %}" class="btn btn-outline-danger">Edit</a>
+            <a href="{% url 'donors:delete' donor.pk %}" class="btn btn-outline-secondary">Delete</a>
+        </div>
+        {% endif %}
+        <a href="{% url 'donors:list' %}" class="btn btn-link mt-2">&larr; Back to donor list</a>
+    </div>
+</div>
+{% endblock %}

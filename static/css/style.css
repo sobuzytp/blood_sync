@@ -1,0 +1,96 @@
+:root {
+    --bs-danger: #c0293b;
+    --bloodsync-dark: #2b0a10;
+    --bloodsync-red: #b5182c;
+    --bloodsync-red-dark: #8e1223;
+}
+
+body {
+    background-color: #faf7f7;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.bloodsync-nav {
+    background: linear-gradient(90deg, var(--bloodsync-dark), var(--bloodsync-red));
+}
+
+.brand-accent {
+    color: #ffd7dc;
+}
+
+.bloodsync-footer {
+    background: var(--bloodsync-dark);
+    color: #fff;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, var(--bloodsync-red-dark), var(--bloodsync-red));
+    color: #fff;
+    padding: 4.5rem 0;
+    border-radius: 0 0 2rem 2rem;
+}
+
+.hero-section h1 {
+    font-weight: 700;
+}
+
+.quick-action-card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    height: 100%;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card {
+    border-radius: 14px;
+    border: none;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.badge-available {
+    background-color: #1e8e3e;
+}
+
+.badge-not-available {
+    background-color: #9aa0a6;
+}
+
+.badge-pending {
+    background-color: #e8a33d;
+}
+
+.badge-fulfilled {
+    background-color: #1e8e3e;
+}
+
+.badge-cancelled {
+    background-color: #9aa0a6;
+}
+
+.card-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-title a:hover {
+    color: var(--bloodsync-red);
+}
+
+.donor-avatar {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--bloodsync-red);
+}
+
+.blood-drop-icon {
+    font-size: 3rem;
+}

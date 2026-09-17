@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 600px;">
+    <h2 class="mb-4 text-center">Create Your Account</h2>
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Username</label>
+                {{ form.username }}
+                {% for error in form.username.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Email</label>
+                {{ form.email }}
+                {% for error in form.email.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Full Name</label>
+                {{ form.full_name }}
+                {% for error in form.full_name.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Phone Number</label>
+                {{ form.phone_number }}
+                {% for error in form.phone_number.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Blood Group</label>
+                {{ form.blood_group }}
+                {% for error in form.blood_group.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Location</label>
+                {{ form.location }}
+                {% for error in form.location.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Date of Birth</label>
+                {{ form.date_of_birth }}
+                {% for error in form.date_of_birth.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Profile Picture (optional)</label>
+                {{ form.profile_picture }}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Password</label>
+                {{ form.password1 }}
+                {% for error in form.password1.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Confirm Password</label>
+                {{ form.password2 }}
+                {% for error in form.password2.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-danger w-100 mt-4">Register</button>
+    </form>
+    <p class="text-center mt-3">Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
+</div>
+{% endblock %}
